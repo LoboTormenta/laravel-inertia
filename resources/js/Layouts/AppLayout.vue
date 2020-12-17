@@ -19,7 +19,7 @@
                             </jet-nav-link>
 
 
-                         <jet-nav-link href="/projects" :active="$page.currentRouteName =='project'">
+                         <jet-nav-link href="/projects" :active="$page.currentRouteName.includes('projects')">
                                 Proyectos
                             </jet-nav-link>
 

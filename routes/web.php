@@ -26,12 +26,20 @@ Route::get('/', function () {
 
 
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+// Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
-Route::get('/dashboard', function () {
-    return Inertia\Inertia::render('Dashboard');
-})->name("dashboard");
+// Route::get('/dashboard', function () {
+//     return Inertia\Inertia::render('Dashboard');
+// })->name("dashboard");
 
-Route::resource('projects', ProjectController::class)->except(["show"]);
 
+
+Route::group(["middleware" => ['auth:sanctum', 'verified']], function (){
+	Route::get("/dashboard", function (){
+		return Inertia\Inertia::render('Dashboard');
+	})->name("dashboard");
+
+	Route::resource("projects", ProjectController::class)->except(["show"]);
 });
+
+
